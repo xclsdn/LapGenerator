@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LapGenerator", "LapGenerator\LapGenerator.csproj", "{1B4F5BED-EFBB-4E59-B16D-37F94284FAAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B4F5BED-EFBB-4E59-B16D-37F94284FAAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B4F5BED-EFBB-4E59-B16D-37F94284FAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B4F5BED-EFBB-4E59-B16D-37F94284FAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B4F5BED-EFBB-4E59-B16D-37F94284FAAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7AD61144-846B-49B7-A764-EADFF20832BF}
+	EndGlobalSection
+EndGlobal
