@@ -7,11 +7,12 @@
         let name=document.getElementById("name").value;
         let car=document.getElementById("car").value;
         let time=parseInt(document.getElementById("laptime").value);
-        if(name.length==0 || car<=0 || time <=0)
-        {
-            alart("Invalid Data");
-            return;
-        }
+        // Because frontend need to generate the invalid data, so don't check, send some invalid data
+        //if(name.length==0 || car<=0 || time <=0)
+        //{
+        //    alert("Invalid Data");
+        //    return;
+        //}
         // time add a random seconds
         if(random>0){
             time+=Math.round(Math.random()*random)
@@ -41,7 +42,7 @@
             : value;
             };
     function RepeatSend(){
-        let repeatTimes=parseInt(document.getElementById("repeat").value);
+        let repeatTimes=parseInt(document.getElementById("repeat").value)-1;
         Countdown(repeatTimes,5000);
     }
 </script>

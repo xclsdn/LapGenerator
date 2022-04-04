@@ -7,10 +7,13 @@ namespace LapGenerator.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly LapContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,
+            LapContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -18,9 +21,13 @@ namespace LapGenerator.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Report()
         {
-            return View();
+            var report = from p in _context.Set<Race>()
+                         group p by p.DriverName
+                         into g
+                         select new Report() { Name = g.Key, AverageTime = (int)g.Average(x => x.LapTime), LapCount = g.Count(), MaxTime = g.Max(x => x.LapTime), MinTime = g.Min(x => x.LapTime) };
+            return View(report);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
