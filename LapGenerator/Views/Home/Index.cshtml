@@ -1,8 +1,70 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "LapGenerator";
 }
+<script>
+    const url="/api/races";
+    function SendData(random=0){
+        let name=document.getElementById("name").value;
+        let car=document.getElementById("car").value;
+        let time=parseInt(document.getElementById("laptime").value);
+        if(name.length==0 || car<=0 || time <=0)
+        {
+            alart("Invalid Data");
+            return;
+        }
+        // time add a random seconds
+        if(random>0){
+            time+=Math.round(Math.random()*random)
+        }
+        const data={DriverName:name,CarNumber:car,LapTime:time};
+        console.log(data);
+        fetch(url,{
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(data => {
+          //backend return 400
+          if(data.status >=400){alert("invalid data");}
+            })
+        .catch((error) => {
+          alert(error);
+            });
+    }
+
+    const Countdown = (value,delay = 5000) => {
+            SendData(10);
+            return value > 0
+            ? setTimeout(() => Countdown(value - 1, delay), delay)
+            : value;
+            };
+    function RepeatSend(){
+        let repeatTimes=parseInt(document.getElementById("repeat").value);
+        Countdown(repeatTimes,5000);
+    }
+</script>
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <h1 class="display-4">Mock Lap Time Generator</h1>
+    <div class="mb-3">
+        <label for="name" class="form-label">Driver Name</label>
+        <input id="name" value="test" type="text" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Car Number</label>
+        <input class="form-control" type="number" id="car" value=5 />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Time Seconds</label>
+        <input class="form-control" type="number" id="laptime" value=100 />
+    </div>
+    <button onclick=SendData() class="btn btn-primary">Send</button>
+    <div class="mb-3">
+        <label class="form-label">Repeat send data times</label>
+        <input class="form-control" type="number" id="repeat" value=10 />
+    </div>
+    <button onclick=RepeatSend() class="btn btn-primary">Send data every 5 seconds</button>
 </div>
