@@ -20,3 +20,14 @@ Install-Package Microsoft.EntityFrameworkCore.Tools
 8. using postman test api add some data.
 9. add index page
 10. add report page
+
+To use the repo 
+### need in visual studio Package Manager Console run updata-database to setup the local sqllite database and tables
+In the home page is used to generate the mock data to backend
+1. click Send button will send one record data to backend.
+2. Before click send button, you can change the data in the page.
+3. Click Send data every 5 seconds button will send data every 5 seconds util the value of "Repeat send data times" count to 0.
+4. You can chang send how many data.
+5. Click Send button will send the data according the value of pages.
+6. Click Send data every 5 seconds button will send the time value and a random number rang 0 to 10.
+7. click Report, will show the report
